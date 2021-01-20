@@ -9,6 +9,7 @@
         <module name="ad-gateway" />
         <module name="ad-eureka8001" />
         <module name="ad-eureka8000" />
+        <module name="ad-eureka" />
         <module name="ad-commom" />
         <module name="ad-eureka8002" />
         <module name="ad-sponsor" />

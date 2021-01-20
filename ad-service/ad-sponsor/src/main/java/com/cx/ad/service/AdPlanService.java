@@ -1,5 +1,6 @@
 package com.cx.ad.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.cx.ad.entity.AdPlan;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
  * @author makejava
  * @since 2021-01-20 15:07:52
  */
-public interface AdPlanService {
+public interface AdPlanService extends IService<AdPlan> {
 
     /**
      * 通过ID查询单条数据

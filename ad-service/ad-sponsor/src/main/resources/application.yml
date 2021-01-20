@@ -17,6 +17,11 @@ spring:
       min-idle: 5
       initial-size: 2
 
+mybatis-plus:
+  #mybatis-plus配置控制台打印完整带参数SQL语句
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
 
 eureka:
   instance:

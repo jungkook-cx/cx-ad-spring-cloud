@@ -1,5 +1,6 @@
 package com.cx.ad.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.cx.ad.entity.unit_condition.AdUnitDistrict;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
  * @author makejava
  * @since 2021-01-20 15:41:53
  */
-public interface AdUnitDistrictService {
+public interface AdUnitDistrictService extends IService<AdUnitDistrict> {
 
     /**
      * 通过ID查询单条数据
@@ -19,14 +20,6 @@ public interface AdUnitDistrictService {
      */
     AdUnitDistrict queryById(Integer id);
 
-    /**
-     * 查询多条数据
-     *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
-     * @return 对象列表
-     */
-    List<AdUnitDistrict> queryAllByLimit(int offset, int limit);
 
     /**
      * 新增数据

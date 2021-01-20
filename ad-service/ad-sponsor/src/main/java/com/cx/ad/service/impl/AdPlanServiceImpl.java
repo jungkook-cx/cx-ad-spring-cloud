@@ -1,5 +1,6 @@
 package com.cx.ad.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cx.ad.entity.AdPlan;
 import com.cx.ad.dao.AdPlanMapper;
 import com.cx.ad.service.AdPlanService;
@@ -15,7 +16,7 @@ import java.util.List;
  * @since 2021-01-20 15:07:52
  */
 @Service("adPlanService")
-public class AdPlanServiceImpl implements AdPlanService {
+public class AdPlanServiceImpl extends ServiceImpl<AdPlanMapper,AdPlan> implements AdPlanService {
     @Resource
     private AdPlanMapper adPlanMapper;
 
@@ -27,7 +28,7 @@ public class AdPlanServiceImpl implements AdPlanService {
      */
     @Override
     public AdPlan queryById(Long id) {
-        return this.adPlanMapper.queryById(id);
+        return this.adPlanMapper.selectById(id);
     }
 
     /**
@@ -39,7 +40,7 @@ public class AdPlanServiceImpl implements AdPlanService {
      */
     @Override
     public List<AdPlan> queryAllByLimit(int offset, int limit) {
-        return this.adPlanMapper.queryAllByLimit(offset, limit);
+        return this.adPlanMapper.selectList(null);
     }
 
     /**
@@ -62,7 +63,7 @@ public class AdPlanServiceImpl implements AdPlanService {
      */
     @Override
     public AdPlan update(AdPlan adPlan) {
-        this.adPlanMapper.update(adPlan);
+        this.adPlanMapper.updateById(adPlan);
         return this.queryById(adPlan.getId());
     }
 
