@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="ad-gateway" />
         <module name="ad-eureka8001" />
         <module name="ad-eureka8000" />
-        <module name="ad-gateway" />
         <module name="ad-commom" />
         <module name="ad-eureka8002" />
+        <module name="ad-sponsor" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

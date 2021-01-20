@@ -1,6 +1,7 @@
 package com.cx.ad.advice;
 
 import com.cx.ad.annotation.IgnoreResponseAdvice;
+import com.cx.ad.vo.R;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -30,9 +31,19 @@ public class RDataAdvice implements ResponseBodyAdvice<Object> {
     }
 
     @Override
+    @SuppressWarnings(value = "unchecked")
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType,
                                   Class<? extends HttpMessageConverter<?>> selectedConverterType,
                                   ServerHttpRequest request, ServerHttpResponse response) {
-        return null;
+
+        R<Object> res=new R<>(0,"");
+        if (Objects.isNull(body)){
+            return res;
+        }else if (body instanceof R){
+            res=(R)body;
+        }else {
+            res.setData(body);
+        }
+        return res;
     }
 }

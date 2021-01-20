@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cx.ad.dao.unit_condition.AdUnitItMapper">
+
+    <resultMap type="com.cx.ad.entity.unit_condition.AdUnitIt" id="AdUnitItMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="unitId" column="unit_id" jdbcType="INTEGER"/>
+        <result property="itTag" column="it_tag" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="AdUnitItMap">
+        select
+          id, unit_id, it_tag
+        from ad-data.ad_unit_it
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="AdUnitItMap">
+        select
+          id, unit_id, it_tag
+        from ad-data.ad_unit_it
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="AdUnitItMap">
+        select
+          id, unit_id, it_tag
+        from ad-data.ad_unit_it
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="unitId != null">
+                and unit_id = #{unitId}
+            </if>
+            <if test="itTag != null and itTag != ''">
+                and it_tag = #{itTag}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into ad-data.ad_unit_it(unit_id, it_tag)
+        values (#{unitId}, #{itTag})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update ad-data.ad_unit_it
+        <set>
+            <if test="unitId != null">
+                unit_id = #{unitId},
+            </if>
+            <if test="itTag != null and itTag != ''">
+                it_tag = #{itTag},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from ad-data.ad_unit_it where id = #{id}
+    </delete>
+
+</mapper>

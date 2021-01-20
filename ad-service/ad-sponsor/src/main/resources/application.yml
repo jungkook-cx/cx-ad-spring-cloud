@@ -1,0 +1,28 @@
+server:
+  port: 7000
+  servlet:
+    context-path: /ad-sponsor
+
+spring:
+  application:
+    name: ad-sponsor
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/ad-data?autoReconnect=true
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    tomcat:
+      max-active: 10
+      min-idle: 5
+      initial-size: 2
+
+
+eureka:
+  instance:
+    hostname: ad-sponsor
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://server1:8000/eureka/,http://server2:8001/eureka/

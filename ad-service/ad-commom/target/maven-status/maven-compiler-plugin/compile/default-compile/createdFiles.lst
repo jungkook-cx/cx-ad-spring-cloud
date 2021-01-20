@@ -1,0 +1,6 @@
+com\cx\ad\advice\GlobalExceptionAdvice.class
+com\cx\ad\vo\R.class
+com\cx\ad\advice\RDataAdvice.class
+com\cx\ad\exception\AdException.class
+com\cx\ad\annotation\IgnoreResponseAdvice.class
+com\cx\ad\config\WebConfig.class

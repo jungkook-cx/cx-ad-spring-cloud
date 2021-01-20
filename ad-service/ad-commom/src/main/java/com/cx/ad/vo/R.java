@@ -20,9 +20,8 @@ public class R<T> implements Serializable {
 
     private T data;
 
-    public R<T> R(Integer code,String message){
+    public R(Integer code, String message){
         this.code=code;
         this.message=message;
-        return this;
     }
 }
