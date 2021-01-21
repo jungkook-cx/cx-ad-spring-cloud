@@ -17,32 +17,5 @@ import java.util.List;
  */
 @Service("adUnitDistrictService")
 public class AdUnitDistrictServiceImpl extends ServiceImpl<AdUnitDistrictMapper,AdUnitDistrict> implements AdUnitDistrictService {
-    @Resource
-    private AdUnitDistrictMapper adUnitDistrictMapper;
 
-    @Override
-    public AdUnitDistrict queryById(Integer id) {
-        return null;
-    }
-
-    @Override
-    public AdUnitDistrict insert(AdUnitDistrict adUnitDistrict) {
-        return null;
-    }
-
-    @Override
-    public AdUnitDistrict update(AdUnitDistrict adUnitDistrict) {
-        return null;
-    }
-
-    /**
-     * 通过主键删除数据
-     *
-     * @param id 主键
-     * @return 是否成功
-     */
-    @Override
-    public boolean deleteById(Integer id) {
-        return this.adUnitDistrictMapper.deleteById(id) > 0;
-    }
 }

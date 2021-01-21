@@ -2,6 +2,11 @@ package com.cx.ad.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cx.ad.entity.AdPlan;
+import com.cx.ad.exception.AdException;
+import com.cx.ad.vo.AdPlanGetRequest;
+import com.cx.ad.vo.AdPlanRequest;
+import com.cx.ad.vo.AdPlanResponse;
+
 import java.util.List;
 
 /**
@@ -11,46 +16,35 @@ import java.util.List;
  * @since 2021-01-20 15:07:52
  */
 public interface AdPlanService extends IService<AdPlan> {
+    /**
+     * 创建推广计划
+     * @param request
+     * @return
+     * @throws AdException
+     */
+        AdPlanResponse createAdPlan(AdPlanRequest request)throws AdException;
 
     /**
-     * 通过ID查询单条数据
-     *
-     * @param id 主键
-     * @return 实例对象
+     * 获取计划
+     * @param request
+     * @return
+     * @throws AdException
      */
-    AdPlan queryById(Long id);
+        List<AdPlan> getAdPlanById(AdPlanGetRequest request) throws AdException;
 
     /**
-     * 查询多条数据
-     *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
-     * @return 对象列表
+     *更新推广计划
+     * @param request
+     * @return
+     * @throws AdException
      */
-    List<AdPlan> queryAllByLimit(int offset, int limit);
+        AdPlanResponse updateAdPlan(AdPlanRequest request) throws AdException;
 
     /**
-     * 新增数据
-     *
-     * @param adPlan 实例对象
-     * @return 实例对象
+     *删除计划
+     * @param request
+     * @return
+     * @throws AdException
      */
-    AdPlan insert(AdPlan adPlan);
-
-    /**
-     * 修改数据
-     *
-     * @param adPlan 实例对象
-     * @return 实例对象
-     */
-    AdPlan update(AdPlan adPlan);
-
-    /**
-     * 通过主键删除数据
-     *
-     * @param id 主键
-     * @return 是否成功
-     */
-    boolean deleteById(Long id);
-
+    void deleteAdPlan(AdPlanRequest request)throws AdException;
 }

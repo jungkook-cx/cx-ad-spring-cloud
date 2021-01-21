@@ -15,21 +15,6 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("adPlan")
 public class AdPlanController {
-    /**
-     * 服务对象
-     */
-    @Resource
-    private AdPlanService adPlanService;
 
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("selectOne")
-    public AdPlan selectOne(Long id) {
-        return this.adPlanService.queryById(id);
-    }
 
 }

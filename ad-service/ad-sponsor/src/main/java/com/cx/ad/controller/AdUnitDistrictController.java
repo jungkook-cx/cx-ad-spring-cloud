@@ -15,21 +15,5 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("adUnitDistrict")
 public class AdUnitDistrictController {
-    /**
-     * 服务对象
-     */
-    @Resource
-    private AdUnitDistrictService adUnitDistrictService;
-
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("selectOne")
-    public AdUnitDistrict selectOne(Integer id) {
-        return this.adUnitDistrictService.queryById(id);
-    }
 
 }

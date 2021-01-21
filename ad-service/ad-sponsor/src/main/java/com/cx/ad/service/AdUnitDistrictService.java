@@ -12,37 +12,5 @@ import java.util.List;
  */
 public interface AdUnitDistrictService extends IService<AdUnitDistrict> {
 
-    /**
-     * 通过ID查询单条数据
-     *
-     * @param id 主键
-     * @return 实例对象
-     */
-    AdUnitDistrict queryById(Integer id);
-
-
-    /**
-     * 新增数据
-     *
-     * @param adUnitDistrict 实例对象
-     * @return 实例对象
-     */
-    AdUnitDistrict insert(AdUnitDistrict adUnitDistrict);
-
-    /**
-     * 修改数据
-     *
-     * @param adUnitDistrict 实例对象
-     * @return 实例对象
-     */
-    AdUnitDistrict update(AdUnitDistrict adUnitDistrict);
-
-    /**
-     * 通过主键删除数据
-     *
-     * @param id 主键
-     * @return 是否成功
-     */
-    boolean deleteById(Integer id);
 
 }

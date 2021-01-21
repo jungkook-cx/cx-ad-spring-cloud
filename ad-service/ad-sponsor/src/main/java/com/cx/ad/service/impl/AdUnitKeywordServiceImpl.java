@@ -18,32 +18,5 @@ import java.util.List;
 @Service("adUnitKeywordService")
 public class AdUnitKeywordServiceImpl extends ServiceImpl<AdUnitKeywordMapper
         ,AdUnitKeyword> implements AdUnitKeywordService {
-    @Resource
-    private AdUnitKeywordMapper adUnitKeywordMapper;
 
-
-    @Override
-    public AdUnitKeyword queryById(Integer id) {
-        return null;
-    }
-
-    @Override
-    public List<AdUnitKeyword> queryAllByLimit(int offset, int limit) {
-        return null;
-    }
-
-    @Override
-    public AdUnitKeyword insert(AdUnitKeyword adUnitKeyword) {
-        return null;
-    }
-
-    @Override
-    public AdUnitKeyword update(AdUnitKeyword adUnitKeyword) {
-        return null;
-    }
-
-    @Override
-    public boolean deleteById(Integer id) {
-        return false;
-    }
 }

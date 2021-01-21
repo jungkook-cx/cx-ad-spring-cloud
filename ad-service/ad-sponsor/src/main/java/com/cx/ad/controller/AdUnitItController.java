@@ -15,21 +15,7 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("adUnitIt")
 public class AdUnitItController {
-    /**
-     * 服务对象
-     */
-    @Resource
-    private AdUnitItService adUnitItService;
 
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("selectOne")
-    public AdUnitIt selectOne(Integer id) {
-        return this.adUnitItService.queryById(id);
-    }
+
 
 }

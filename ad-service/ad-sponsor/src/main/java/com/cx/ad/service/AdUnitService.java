@@ -2,6 +2,9 @@ package com.cx.ad.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cx.ad.entity.AdUnit;
+import com.cx.ad.exception.AdException;
+import com.cx.ad.vo.*;
+
 import java.util.List;
 
 /**
@@ -11,46 +14,17 @@ import java.util.List;
  * @since 2021-01-20 15:23:42
  */
 public interface AdUnitService extends IService<AdUnit> {
+    AdUnitResponse createUnit(AdUnitRequest request) throws AdException;
 
-    /**
-     * 通过ID查询单条数据
-     *
-     * @param id 主键
-     * @return 实例对象
-     */
-    AdUnit queryById(Long id);
+    AdUnitKeywordResponse createUnitKeyword(AdUnitKeywordRequest request)
+            throws AdException;
 
-    /**
-     * 查询多条数据
-     *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
-     * @return 对象列表
-     */
-    List<AdUnit> queryAllByLimit(int offset, int limit);
+    AdUnitItResponse createUnitIt(AdUnitItRequest request)
+            throws AdException;
 
-    /**
-     * 新增数据
-     *
-     * @param adUnit 实例对象
-     * @return 实例对象
-     */
-    AdUnit insert(AdUnit adUnit);
+    AdUnitDistrictResponse createUnitDistrict(AdUnitDistrictRequest request)
+            throws AdException;
 
-    /**
-     * 修改数据
-     *
-     * @param adUnit 实例对象
-     * @return 实例对象
-     */
-    AdUnit update(AdUnit adUnit);
-
-    /**
-     * 通过主键删除数据
-     *
-     * @param id 主键
-     * @return 是否成功
-     */
-    boolean deleteById(Long id);
-
+    CreativeUnitResponse createCreativeUnit(CreativeUnitRequest request)
+            throws AdException;
 }

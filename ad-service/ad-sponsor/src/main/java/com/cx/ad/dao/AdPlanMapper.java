@@ -2,6 +2,7 @@ package com.cx.ad.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.cx.ad.entity.AdPlan;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -13,6 +14,7 @@ import java.util.List;
  * @author makejava
  * @since 2021-01-20 15:07:47
  */
+@Mapper
 public interface AdPlanMapper extends BaseMapper<AdPlan> {
 
     /**
@@ -29,7 +31,7 @@ public interface AdPlanMapper extends BaseMapper<AdPlan> {
      * @param userId
      * @return
      */
-    List<AdPlan> findByIdAndUserId(List<Long> ids,Long userId);
+    List<AdPlan> findByIdsAndUserId(List<Long> ids,Long userId);
 
     /**
      * 根据userId和计划名称查找

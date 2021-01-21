@@ -17,32 +17,5 @@ import java.util.List;
  */
 @Service("adUnitItService")
 public class AdUnitItServiceImpl extends ServiceImpl<AdUnitItMapper,AdUnitIt> implements AdUnitItService {
-    @Resource
-    private AdUnitItMapper adUnitItMapper;
 
-
-    @Override
-    public AdUnitIt queryById(Integer id) {
-        return null;
-    }
-
-    @Override
-    public List<AdUnitIt> queryAllByLimit(int offset, int limit) {
-        return null;
-    }
-
-    @Override
-    public AdUnitIt insert(AdUnitIt adUnitIt) {
-        return null;
-    }
-
-    @Override
-    public AdUnitIt update(AdUnitIt adUnitIt) {
-        return null;
-    }
-
-    @Override
-    public boolean deleteById(Integer id) {
-        return false;
-    }
 }

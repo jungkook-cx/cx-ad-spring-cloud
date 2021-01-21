@@ -2,6 +2,7 @@ package com.cx.ad.dao.unit_condition;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.cx.ad.entity.unit_condition.AdUnitKeyword;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  * @author makejava
  * @since 2021-01-20 15:36:41
  */
+@Mapper
 public interface AdUnitKeywordMapper extends BaseMapper<AdUnitKeyword> {
 
 

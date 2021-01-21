@@ -1,7 +1,7 @@
 server:
   port: 7000
-  servlet:
-    context-path: /ad-sponsor
+#  servlet:
+#    context-path: /ad-sponsor
 
 spring:
   application:
@@ -16,6 +16,11 @@ spring:
       max-active: 10
       min-idle: 5
       initial-size: 2
+
+mybatis-plus:
+  #mybatis-plus配置控制台打印完整带参数SQL语句
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 
 eureka:

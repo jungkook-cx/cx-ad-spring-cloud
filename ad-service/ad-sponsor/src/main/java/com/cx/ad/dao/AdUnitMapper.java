@@ -2,6 +2,7 @@ package com.cx.ad.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.cx.ad.entity.AdUnit;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  * @author makejava
  * @since 2021-01-20 15:23:42
  */
+@Mapper
 public interface AdUnitMapper extends BaseMapper<AdUnit> {
     /**
      * 根据planId和单元名称查找
