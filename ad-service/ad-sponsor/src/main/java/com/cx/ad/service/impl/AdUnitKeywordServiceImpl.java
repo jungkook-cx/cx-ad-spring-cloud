@@ -6,9 +6,6 @@ import com.cx.ad.dao.unit_condition.AdUnitKeywordMapper;
 import com.cx.ad.service.AdUnitKeywordService;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
-import java.util.List;
-
 /**
  * 推广单元关键词 Feature(AdUnitKeyword)表服务实现类
  *

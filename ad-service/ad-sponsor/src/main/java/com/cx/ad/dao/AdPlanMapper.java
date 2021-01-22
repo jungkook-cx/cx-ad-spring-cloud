@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.cx.ad.entity.AdPlan;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -47,4 +46,6 @@ public interface AdPlanMapper extends BaseMapper<AdPlan> {
      * @return
      */
     List<AdPlan> findAllByPlanStatus(Integer status);
+
+    AdPlan findById(@Param("id") Long id);
 }

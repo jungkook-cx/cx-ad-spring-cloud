@@ -1,11 +1,11 @@
 server:
   port: 7000
-#  servlet:
-#    context-path: /ad-sponsor
+  servlet:
+    context-path: /ad-sponsor
 
 spring:
   application:
-    name: ad-sponsor
+    name: eureka-client-ad-sponsor
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/ad-data?autoReconnect=true
     username: root
@@ -24,8 +24,6 @@ mybatis-plus:
 
 
 eureka:
-  instance:
-    hostname: ad-sponsor
   client:
     register-with-eureka: true
     fetch-registry: true

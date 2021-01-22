@@ -30,7 +30,7 @@ public interface AdPlanService extends IService<AdPlan> {
      * @return
      * @throws AdException
      */
-        List<AdPlan> getAdPlanById(AdPlanGetRequest request) throws AdException;
+        List<AdPlan> getAdPlanByIds(AdPlanGetRequest request) throws AdException;
 
     /**
      *更新推广计划
@@ -47,4 +47,6 @@ public interface AdPlanService extends IService<AdPlan> {
      * @throws AdException
      */
     void deleteAdPlan(AdPlanRequest request)throws AdException;
+
+    AdPlan selectById(Long id);
 }

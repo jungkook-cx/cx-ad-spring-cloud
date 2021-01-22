@@ -1,5 +1,6 @@
 package com.cx.ad.filter;
 
+import org.apache.commons.lang.time.DateUtils;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
@@ -24,7 +25,7 @@ public class PreRequestFilter implements GlobalFilter, Ordered {
         return chain.filter(exchange).then(Mono.fromRunnable(()->{
             Long startTime = exchange.getAttribute(ELAPSED_TIME_BEGIN);
             if (startTime!=null){
-                System.out.println(exchange.getRequest().getURI().getRawPath()+": "+(System.currentTimeMillis()-startTime));
+                System.out.println(exchange.getRequest().getURI().getRawPath()+" 方法耗时 : "+ (System.currentTimeMillis()-startTime)+"毫秒");
             }
         }));
     }

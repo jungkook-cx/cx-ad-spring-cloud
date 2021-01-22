@@ -2,7 +2,6 @@ package com.cx.ad.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cx.ad.entity.unit_condition.AdUnitDistrict;
-import java.util.List;
 
 /**
  * 推广单元地域 Feature(AdUnitDistrict)表服务接口

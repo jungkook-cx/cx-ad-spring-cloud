@@ -13,24 +13,9 @@
         <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
-    <!--查询单个-->
-    <select id="queryById" resultMap="AdPlanMap">
-        select
-          id, user_id, plan_name, plan_status, start_date, end_date, create_time, update_time
-        from ad-data.ad_plan
-        where id = #{id}
-    </select>
 
-    <!--查询指定行数据-->
-    <select id="queryAllByLimit" resultMap="AdPlanMap">
-        select
-          id, user_id, plan_name, plan_status, start_date, end_date, create_time, update_time
-        from ad-data.ad_plan
-        limit #{offset}, #{limit}
-    </select>
-
-    <!--通过实体作为筛选条件查询-->
-    <select id="queryAll" resultMap="AdPlanMap">
+    <!--通过id和userID作为筛选条件查询-->
+    <select id="findByIdAndUserId" resultMap="AdPlanMap">
         select
           id, user_id, plan_name, plan_status, start_date, end_date, create_time, update_time
         from ad-data.ad_plan
@@ -41,65 +26,33 @@
             <if test="userId != null">
                 and user_id = #{userId}
             </if>
-            <if test="planName != null and planName != ''">
-                and plan_name = #{planName}
+        </where>
+    </select>
+
+    <!--通过userID和planName作为筛选条件查询-->
+    <select id="findByUserAndPlanName" resultMap="AdPlanMap">
+        select
+        id, user_id, plan_name, plan_status, start_date, end_date, create_time, update_time
+        from ad-data.ad_plan
+        <where>
+            <if test="userId != null">
+                and id = #{id}
             </if>
-            <if test="planStatus != null">
-                and plan_status = #{planStatus}
-            </if>
-            <if test="startDate != null">
-                and start_date = #{startDate}
-            </if>
-            <if test="endDate != null">
-                and end_date = #{endDate}
-            </if>
-            <if test="createTime != null">
-                and create_time = #{createTime}
-            </if>
-            <if test="updateTime != null">
-                and update_time = #{updateTime}
+            <if test="planName != null">
+                and user_id = #{userId}
             </if>
         </where>
     </select>
 
-    <!--新增所有列-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into ad-data.ad_plan(user_id, plan_name, plan_status, start_date, end_date, create_time, update_time)
-        values (#{userId}, #{planName}, #{planStatus}, #{startDate}, #{endDate}, #{createTime}, #{updateTime})
-    </insert>
 
-    <!--通过主键修改数据-->
-    <update id="update">
-        update ad-data.ad_plan
-        <set>
-            <if test="userId != null">
-                user_id = #{userId},
-            </if>
-            <if test="planName != null and planName != ''">
-                plan_name = #{planName},
-            </if>
-            <if test="planStatus != null">
-                plan_status = #{planStatus},
-            </if>
-            <if test="startDate != null">
-                start_date = #{startDate},
-            </if>
-            <if test="endDate != null">
-                end_date = #{endDate},
-            </if>
-            <if test="createTime != null">
-                create_time = #{createTime},
-            </if>
-            <if test="updateTime != null">
-                update_time = #{updateTime},
-            </if>
-        </set>
-        where id = #{id}
-    </update>
+    <select id="findByIdsAndUserId" resultMap="AdPlanMap">
+        select * from ad_plan where user_id=#{userId}
+        <foreach collection="list" item="" index="index" separator=",">
+            (#{ad_plan.id})
+        </foreach>
+    </select>
 
-    <!--通过主键删除-->
-    <delete id="deleteById">
-        delete from ad-data.ad_plan where id = #{id}
-    </delete>
-
+    <select id="findById" resultMap="AdPlanMap">
+        select * from ad_plan where id=#{id}
+    </select>
 </mapper>

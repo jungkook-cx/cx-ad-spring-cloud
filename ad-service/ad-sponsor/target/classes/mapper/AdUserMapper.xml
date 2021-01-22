@@ -15,10 +15,4 @@
         select * from ad_user where username=#{username}
     </select>
 
-    <insert id="saveAll" parameterType="java.util.List">
-        insert into user(username,token) values
-        <foreach collection="list" item="ad_user" index="index" separator=",">
-            (#{ad_user.username},#{ad_user.token})
-        </foreach>
-    </insert>
 </mapper>

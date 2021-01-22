@@ -1,13 +1,10 @@
 package com.cx.ad.service;
 
-import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cx.ad.entity.AdUser;
 import com.cx.ad.exception.AdException;
 import com.cx.ad.vo.CreateUserRequest;
 import com.cx.ad.vo.CreateUserResponse;
-
-import java.util.List;
 
 /**
  * @author xi.chen
@@ -26,5 +23,5 @@ public interface AdUserService extends IService<AdUser> {
      * @param request
      * @return
      */
-    int saveAll(List<CreateUserRequest> request);
+
 }

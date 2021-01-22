@@ -1,6 +1,5 @@
 package com.cx.ad.service.impl;
 
-import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cx.ad.constant.Constants;
 import com.cx.ad.dao.AdUserMapper;
@@ -15,7 +14,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -55,12 +53,6 @@ public class AdUserServiceImpl extends ServiceImpl<AdUserMapper, AdUser> impleme
         return  new CreateUserResponse(user.getId(),user.getUsername(),user.getToken(),user.getCreateTime(),user.getUpdateTime()) ;
     }
 
-    @Override
-    public int saveAll(List<CreateUserRequest> request) {
-        int count = adUserMapper.saveAll(request);
-
-        return count;
-    }
 
 
 }

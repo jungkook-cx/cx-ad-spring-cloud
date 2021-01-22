@@ -2,7 +2,6 @@ package com.cx.ad.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cx.ad.entity.unit_condition.AdUnitKeyword;
-import java.util.List;
 
 /**
  * 推广单元关键词 Feature(AdUnitKeyword)表服务接口

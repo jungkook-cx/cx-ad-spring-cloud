@@ -17,7 +17,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -71,7 +70,7 @@ public class AdPlanServiceImpl extends ServiceImpl<AdPlanMapper,AdPlan> implemen
      * @throws AdException
      */
     @Override
-    public List<AdPlan> getAdPlanById(AdPlanGetRequest request) throws AdException {
+    public List<AdPlan> getAdPlanByIds(AdPlanGetRequest request) throws AdException {
         if (!request.validate()){
             throw new AdException(Constants.ErrorMsg.REQUEST_PARAM_ERROR);
         }
@@ -133,5 +132,10 @@ public class AdPlanServiceImpl extends ServiceImpl<AdPlanMapper,AdPlan> implemen
         adPlan.setPlanStatus(CommonStatus.INVALID.getStatus());
         adPlan.setUpdateTime(new Date());
         adPlanMapper.updateById(adPlan);
+    }
+
+    @Override
+    public AdPlan selectById(Long id) {
+      return   adPlanMapper.findById(id);
     }
 }

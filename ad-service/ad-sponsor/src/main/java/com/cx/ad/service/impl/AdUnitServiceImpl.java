@@ -7,6 +7,7 @@ import com.cx.ad.dao.AdPlanMapper;
 import com.cx.ad.dao.unit_condition.AdUnitDistrictMapper;
 import com.cx.ad.dao.unit_condition.AdUnitItMapper;
 import com.cx.ad.dao.unit_condition.AdUnitKeywordMapper;
+import com.cx.ad.dao.unit_condition.CreativeUnitMapper;
 import com.cx.ad.entity.AdPlan;
 import com.cx.ad.entity.AdUnit;
 import com.cx.ad.dao.AdUnitMapper;
@@ -40,6 +41,7 @@ public class AdUnitServiceImpl extends ServiceImpl<AdUnitMapper,AdUnit> implemen
     private AdUnitDistrictMapper unitDistrictMapper;
     private AdUnitItMapper unitItMapper;
     private AdCreativeMapper creativeMapper;
+    private CreativeUnitMapper creativeUnitMapper;
     /**
      * 创建推广单元
      * @param request
@@ -72,17 +74,23 @@ public class AdUnitServiceImpl extends ServiceImpl<AdUnitMapper,AdUnit> implemen
         return new AdUnitResponse(unit.getId(), unit.getUnitName());
     }
 
+    /**
+     * 创建关键字
+     * @param request
+     * @return
+     * @throws AdException
+     */
     @Override
     public AdUnitKeywordResponse createUnitKeyword(AdUnitKeywordRequest request) throws AdException {
 
-      /*  List<Long> unitIds = request.getUnitKeywords().stream()
+        List<Long> unitIds = request.getUnitKeywords().stream()
                 .map(AdUnitKeywordRequest.UnitKeyword::getUnitId)
                 .collect(Collectors.toList());
         if (!isRelatedUnitExist(unitIds)) {
             throw new AdException(Constants.ErrorMsg.REQUEST_PARAM_ERROR);
         }
 
-        List<Long> ids = Collections.emptyList();
+        List<Long> ids = new ArrayList<>(Collections.emptyList());
 
         List<AdUnitKeyword> unitKeywords = new ArrayList<>();
         if (!CollectionUtils.isEmpty(request.getUnitKeywords())) {
@@ -90,20 +98,26 @@ public class AdUnitServiceImpl extends ServiceImpl<AdUnitMapper,AdUnit> implemen
             request.getUnitKeywords().forEach(i -> unitKeywords.add(
                     new AdUnitKeyword(i.getUnitId(), i.getKeyword())
             ));
-            ids = unitKeywordMapper.insert(unitKeywords).stream()
+           /* ids = unitKeywordMapper.insert(unitKeywords).stream()
                     .map(AdUnitKeyword::getId)
-                    .collect(Collectors.toList());
+                    .collect(Collectors.toList());*/
+        }
+        for (AdUnitKeyword unitKeyword : unitKeywords) {
+            unitKeywordMapper.insert(unitKeyword);
+            ids.add(unitKeyword.getId());
         }
 
-        return new AdUnitKeywordResponse(ids);*/
-        return null;
+        return new AdUnitKeywordResponse(ids);
+
     }
 
     @Override
     public AdUnitItResponse createUnitIt(AdUnitItRequest request) throws AdException {
-       /* List<Long> unitIds = request.getUnitIts().stream()
+
+        List<Long> unitIds = request.getUnitIts().stream()
                 .map(AdUnitItRequest.UnitIt::getUnitId)
                 .collect(Collectors.toList());
+
         if (!isRelatedUnitExist(unitIds)) {
             throw new AdException(Constants.ErrorMsg.REQUEST_PARAM_ERROR);
         }
@@ -112,18 +126,21 @@ public class AdUnitServiceImpl extends ServiceImpl<AdUnitMapper,AdUnit> implemen
         request.getUnitIts().forEach(i -> unitIts.add(
                 new AdUnitIt(i.getUnitId(), i.getItTag())
         ));
-
-        List<Long> ids = unitItMapper.saveAll(unitIts).stream()
+        List<Long> ids=new ArrayList<>();
+        for (AdUnitIt unitIt : unitIts) {
+            unitItMapper.insert(unitIt);
+            ids.add(unitIt.getId());
+        }
+        /*List<Long> ids = unitItMapper.saveAll(unitIts).stream()
                 .map(AdUnitIt::getId)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList());*/
 
-        return new AdUnitItResponse(ids);*/
-        return null;
+        return new AdUnitItResponse(ids);
     }
 
     @Override
     public AdUnitDistrictResponse createUnitDistrict(AdUnitDistrictRequest request) throws AdException {
-        /*List<Long> unitIds = request.getUnitDistricts().stream()
+        List<Long> unitIds = request.getUnitDistricts().stream()
                 .map(AdUnitDistrictRequest.UnitDistrict::getUnitId)
                 .collect(Collectors.toList());
         if (!isRelatedUnitExist(unitIds)) {
@@ -135,24 +152,29 @@ public class AdUnitServiceImpl extends ServiceImpl<AdUnitMapper,AdUnit> implemen
                 new AdUnitDistrict(d.getUnitId(), d.getProvince(),
                         d.getCity())
         ));
-        List<Long> ids = unitDistrictMapper.saveAll(unitDistricts)
+        List<Long>  ids=new ArrayList<>();
+        for (AdUnitDistrict unitDistrict : unitDistricts) {
+            unitDistrictMapper.insert(unitDistrict);
+            ids.add(unitDistrict.getId());
+        }
+       /* List<Long> ids = unitDistrictMapper.saveAll(unitDistricts)
                 .stream().map(AdUnitDistrict::getId)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList());*/
 
-        return new AdUnitDistrictResponse(ids);*/
-        return null;
+        return new AdUnitDistrictResponse(ids);
     }
 
     @Override
     public CreativeUnitResponse createCreativeUnit(CreativeUnitRequest request) throws AdException {
-      /*  List<Long> unitIds = request.getUnitItems().stream()
+        List<Long> unitIds = request.getUnitItems().stream()
                 .map(CreativeUnitRequest.CreativeUnitItem::getUnitId)
                 .collect(Collectors.toList());
+
         List<Long> creativeIds = request.getUnitItems().stream()
                 .map(CreativeUnitRequest.CreativeUnitItem::getCreativeId)
                 .collect(Collectors.toList());
 
-        if (!(isRelatedUnitExist(unitIds) && isRelatedUnitExist(creativeIds))) {
+        if (!(isRelatedUnitExist(unitIds) && isRelatedCreativeExist(creativeIds))) {
             throw new AdException(Constants.ErrorMsg.REQUEST_PARAM_ERROR);
         }
 
@@ -160,14 +182,18 @@ public class AdUnitServiceImpl extends ServiceImpl<AdUnitMapper,AdUnit> implemen
         request.getUnitItems().forEach(i -> creativeUnits.add(
                 new CreativeUnit(i.getCreativeId(), i.getUnitId())
         ));
-
-        List<Long> ids = creativeMapper.insert(creativeUnits)
+        List<Long> ids=new ArrayList<>();
+        for (CreativeUnit creativeUnit : creativeUnits) {
+            creativeUnitMapper.insert(creativeUnit);
+            ids.add(creativeUnit.getId());
+        }
+        /*List<Long> ids = creativeMapper.insert(creativeUnits)
                 .stream()
                 .map(CreativeUnit::getId)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList());*/
 
-        return new CreativeUnitResponse(ids);*/
-        return null;
+        return new CreativeUnitResponse(ids);
+
     }
 
     private boolean isRelatedUnitExist(List<Long> unitIds) {
@@ -175,8 +201,7 @@ public class AdUnitServiceImpl extends ServiceImpl<AdUnitMapper,AdUnit> implemen
         if (CollectionUtils.isEmpty(unitIds)) {
             return false;
         }
-
-        return creativeMapper.selectBatchIds(unitIds).size() ==
+        return unitMapper.selectBatchIds(unitIds).size() ==
                 new HashSet<>(unitIds).size();
     }
 

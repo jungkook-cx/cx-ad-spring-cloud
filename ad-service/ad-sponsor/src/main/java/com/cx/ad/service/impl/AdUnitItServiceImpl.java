@@ -6,9 +6,6 @@ import com.cx.ad.dao.unit_condition.AdUnitItMapper;
 import com.cx.ad.service.AdUnitItService;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
-import java.util.List;
-
 /**
  * 推广单元兴趣 Feature(AdUnitIt)表服务实现类
  *
